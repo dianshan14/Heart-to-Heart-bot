@@ -53,7 +53,7 @@ Note: the version of `python` should be Python3.
 ## Usage and Scene
 1. Start interacting with HTH-bot
     * ***search `familysbot` on telegram***
-    * ![](https://i.imgur.com/ocNeGSO.jpg =200x355)
+    * ![](https://i.imgur.com/ocNeGSO.jpg)
     * bot will show you its description first
     * ![](https://i.imgur.com/f4wbxQq.jpg =200x355)
 
@@ -167,3 +167,11 @@ Note: the version of `python` should be Python3.
         * used by jieba
     * **`Procfile`**, **`runtime.txt`**: 
         * used by heroku 
+
+
+<style>
+img {
+	width: 200;
+	height: 355;
+}
+</style>
