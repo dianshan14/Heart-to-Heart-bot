@@ -2,7 +2,7 @@
 #### Table of Contents
 * [Install](#install)
 * [Purpose](#purpose)
-    * [Why this purpose](#why-this-purpose)
+    * [Why this motivation](#why-this-motivation)
 * [Launch](#launch)
 * [Functionality](#functionality)
 * [Usage and Scene](#usage-and-scene)
@@ -53,7 +53,7 @@ Note: the version of `python` should be Python3.
 ## Usage and Scene
 1. Start interacting with HTH-bot
     * ***search `familysbot` on telegram***
-    * ![](https://i.imgur.com/ocNeGSO.jpg =200x)
+    * ![](https://i.imgur.com/ocNeGSO.jpg)
     * bot will show you its description first
     * ![](https://i.imgur.com/f4wbxQq.jpg =200x)
 
