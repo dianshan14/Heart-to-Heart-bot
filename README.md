@@ -53,52 +53,52 @@ Note: the version of `python` should be Python3.
 ## Usage and Scene
 1. Start interacting with HTH-bot
     * ***search `familysbot` on telegram***
-    * ![](https://i.imgur.com/ocNeGSO.jpg)
+	* <img src="https://i.imgur.com/ocNeGSO.jpg" width="200" height="355" />
     * bot will show you its description first
-    * ![](https://i.imgur.com/f4wbxQq.jpg =200x355)
+	* <img src="https://i.imgur.com/f4wbxQq.jpg" width="200" height="355" />
 
 2. Choose interaction with bot
     1. Joke
         * press **`Joke`** from **start**
-        * ![](https://i.imgur.com/wpQGlya.jpg =200x355)
+		* <img src="https://i.imgur.com/wpQGlya.jpg" width="200" height="355" />
         * press comment (here is **`funny`**)
-        * ![](https://i.imgur.com/LO8XW4T.jpg =200x355)
+		* <img src="https://i.imgur.com/LO8XW4T.jpg" width="200" height="355" />
         * then, you can
             * press **`Next joke`** to get randomly new joke (from about 100 jokes)
             * press **`Back`** to back **start**
             * (here is **`Back`**)
     2. Riddle
         * press **`Riddle`** from **start**
-        * ![](https://i.imgur.com/K1pVRUE.jpg =200x355)
+		* <img src="https://i.imgur.com/K1pVRUE.jpg" width="200" height="355" />
         * answer this riddle (my answer is **`不知道`**)
-        * ![](https://i.imgur.com/GqJlXZF.jpg =200x355)
+		* <img src="https://i.imgur.com/GqJlXZF.jpg" width="200" height="355" />
         * bot reply answer to you
-        * ![](https://i.imgur.com/WGm615U.jpg =200x355)
+		* <img src="https://i.imgur.com/WGm615U.jpg" width="200" height="355" />
         * then, you can
             * press **`Next riddle`** to get randomly new riddle (from about 250000 riddles)
             * press **`Back`** to back **start**
             * (here is **`Back`**)
     3. Video
         * press **`Video`** from **start**
-        * ![](https://i.imgur.com/DLP5rvt.jpg =200x355)
+		* <img src="https://i.imgur.com/DLP5rvt.jpg" width="200" height="355" />
         * then, you can
             * press **`Suggestion from bot`**
             * press **`Search yourself`**
         * here press **`Suggestion from bot`** first
-        * ![](https://i.imgur.com/RYnHZt6.jpg =200x355)
+		* <img src="https://i.imgur.com/RYnHZt6.jpg" width="200" height="355" />
         * then, you can choose one mood (here is **`happy`**)
         * different mood will get different videos
-        * ![](https://i.imgur.com/n3gDb5H.jpg =200x355)
+		* <img src="https://i.imgur.com/n3gDb5H.jpg" width="200" height="355" />
         * then, you can
             * press **`Suggestion from bot again`**
             * press **`Back`** to back **start**
             * here is **`Back`**, because we should press the above mentioned **`Search yourself`**
         * press **`Search yourself`**
-        * ![](https://i.imgur.com/XyU0pOD.jpg =200x355)
+		* <img src="https://i.imgur.com/XyU0pOD.jpg" width="200" height="355" />
         * then you should give keyword to bot (here is **`倔強`**)
-        * ![](https://i.imgur.com/yaDYSWs.jpg =200x355)
+		* <img src="https://i.imgur.com/yaDYSWs.jpg" width="200" height="355" />
         * bot will reply one of result of search to you (from three result)
-        * ![](https://i.imgur.com/Uycbq1R.jpg =200x355)
+		* <img src="https://i.imgur.com/Uycbq1R.jpg" width="200" height="355" />
         * then, you can
             * press **`No, search again.`** to restart to serach
             * press **`Yes, got it`** to back **start**
@@ -106,23 +106,23 @@ Note: the version of `python` should be Python3.
         * press **`Chat`** from **start**
         * after press **`Chat`**, the language will be in Chinese temporarily
         * then, bot will ask your mood now
-        * ![](https://i.imgur.com/2XiL7dL.jpg =200x355)
+		* <img src="https://i.imgur.com/2XiL7dL.jpg" width="200" height="355" />
         * press your mood (here is **`開心`**)
         * different mood will get different picture and one mood maybe get different picture(from 2)
         * then, bot will reply message "Waiting for sending picture"
-        * ![](https://i.imgur.com/UOAFOfT.jpg =200x355)
+		* <img src="https://i.imgur.com/UOAFOfT.jpg" width="200" height="355" />
         * after picture be sent, message will change to "Hope this picture can let you be more happy"
-        * ![](https://i.imgur.com/FX8pDWy.jpg =200x355)
+		* <img src="https://i.imgur.com/FX8pDWy.jpg" width="200" height="355" />
         * then, you can
             * press **`有`** to back **start**
             * press **`沒有`** to chat with bot deeply
             * here is **`沒有`**
-        * ![](https://i.imgur.com/dtH9T5D.jpg =200x355)
+		* <img src="https://i.imgur.com/dtH9T5D.jpg" width="200" height="355" />
         * then, you can chat with bot three times~
         * bot will try to judge what your semantic of words is, and give reply to you
-        * ![](https://i.imgur.com/prv4YTM.jpg =200x355)
-        * ![](https://i.imgur.com/u02YuwE.jpg =200x355)
-        * ![](https://i.imgur.com/Jygiblz.jpg =200x355)
+		* <img src="https://i.imgur.com/prv4YTM.jpg" width="200" height="355" />
+		* <img src="https://i.imgur.com/u02YuwE.jpg" width="200" height="355" />
+		* <img src="https://i.imgur.com/Jygiblz.jpg" width="200" height="355" />
 
 ## FSM
 [FSM picture link](https://i.imgur.com/k1wNsh1.png)
@@ -137,9 +137,9 @@ Note: the version of `python` should be Python3.
 * Use *InlineKeyboardButton* to interact with user and dynamicly update message
 * Set description and command list
     * command list
-        * ![](https://i.imgur.com/UaMYXMU.jpg =300x355)
+		* <img src="https://i.imgur.com/UaMYXMU.jpg" width="200" height="355" />
     * description
-        * ![](https://i.imgur.com/2c8gDXR.jpg =200x355)
+		* <img src="https://i.imgur.com/2c8gDXR.jpg" width="200" height="355" />
 
 ## disadvantage
 * No database
@@ -167,11 +167,3 @@ Note: the version of `python` should be Python3.
         * used by jieba
     * **`Procfile`**, **`runtime.txt`**: 
         * used by heroku 
-
-
-<style>
-img {
-	width: 200;
-	height: 355;
-}
-</style>
