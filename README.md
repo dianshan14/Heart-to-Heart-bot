@@ -137,9 +137,9 @@ Note: the version of `python` should be Python3.
 * Use *InlineKeyboardButton* to interact with user and dynamicly update message
 * Set description and command list
     * command list
-		* <img src="https://i.imgur.com/UaMYXMU.jpg" width="200" height="355" />
+		* <img src="https://i.imgur.com/UaMYXMU.jpg" width="300" height="100" />
     * description
-		* <img src="https://i.imgur.com/2c8gDXR.jpg" width="200" height="355" />
+		* <img src="https://i.imgur.com/2c8gDXR.jpg" width="200" height="180" />
 
 ## disadvantage
 * No database
