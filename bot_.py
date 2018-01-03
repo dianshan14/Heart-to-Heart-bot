@@ -29,7 +29,6 @@ machine = TocMachine(
         State(name="riddle", on_enter=['give_riddle']),
         State(name="answer_riddle", on_enter=['answer_riddle']),
         State(name="question_riddle"),
-        #State(name="comment_riddle", on_enter=['comment_riddle']),
         # music
         State(name="question_music", on_enter=['question_music']),
         # music -> suggest
@@ -52,19 +51,18 @@ machine = TocMachine(
             'trigger': 'start_to_joke',
             'source': 'start',
             'dest': 'joke',
-            #'conditions': ''
         },
         {
             'trigger': 'joke_to_comment',
             'source': 'joke',
             'dest': 'comment_joke',
-            'conditions': 'comment_joke' # 確定 comment 有效之後才換狀態
+            'conditions': 'comment_joke'
         },
-        {# 直接跳
+        {
             'trigger': 'comment_joke_to_question',
             'source': 'comment_joke',
             'dest': 'question_joke',
-            #'conditions': ''
+            # jump directly
         },
         {
             'trigger': 'next_joke',
@@ -93,7 +91,6 @@ machine = TocMachine(
             'trigger': 'answer_riddle_to_question',
             'source': 'answer_riddle',
             'dest': 'question_riddle',
-            #'conditions': ''
         },
         {
             'trigger': 'next_riddle',
@@ -112,7 +109,6 @@ machine = TocMachine(
             'trigger': 'start_to_music',
             'source': 'start',
             'dest': 'question_music',
-            #'conditions': ''
         },
         {#suggest
             'trigger': 'music_reply',
@@ -124,13 +120,11 @@ machine = TocMachine(
             'trigger': 'suggest_mood_music',
             'source': 'question_mood_suggest',
             'dest': 'mood_music',
-            #'conditions': ''
         },
         {
             'trigger': 'suggest_next_music',
             'source': 'mood_music',
             'dest': 'suggest_next',
-            #'conditions': ''
         },
         {
             'trigger': 'next_suggest',
@@ -154,13 +148,11 @@ machine = TocMachine(
             'trigger': 'search_result_and_question',
             'source': 'search',
             'dest': 'result_and_question',
-            #'conditions': ''
         },
         {
             'trigger': 'question_result',
             'source': 'result_and_question',
             'dest': 'happy_result',
-            #'conditions': ''
         },
         {
             'trigger': 'search_next',
@@ -179,13 +171,11 @@ machine = TocMachine(
             'trigger': 'start_to_chat',
             'source': 'start',
             'dest': 'question_mood_chat',
-            #'conditions': ''
         },
         {
             'trigger': 'chat_with_mood',
             'source': 'question_mood_chat',
             'dest': 'give_pic_or_text',
-            #'conditions': ''
         },
         {
             'trigger': 'mood_be_better',
@@ -230,11 +220,10 @@ def _set_webhook():
 
 @app.route('/hook', methods=['POST'])
 def webhook_handler():
-    # add if-else -> update state
     
     update = telegram.Update.de_json(request.get_json(force=True), bot)
-    #print("From: %s %s, Text is: %s"%(update.message.chat.first_name,\
-    #update.message.chat.last_name, update.message.text))
+
+    # print message
     if update.callback_query != None:
         print("\033[1;34m""user: ", end='')
         print_something(update.callback_query.from_user)
@@ -263,47 +252,37 @@ def webhook_handler():
 
     #print(update)
 
-    # 外面只判斷 state, 不做任何操作
+    # Just jugde state here.
     if update.callback_query != None:
+        # callback enter here
         if machine.is_start():
-            if update.callback_query != None: # 所有回來的都到這裡！ callback
+            if update.callback_query != None: 
                 if update.callback_query.data == "Joke":
-                    #machine.msg.edit_reply_markup(reply_markup=None)
-                    # 在裡面要砍掉訊息
-                    machine.start_to_joke(update) # 切記 傳進去的是 callback
-                    pass
+                    machine.start_to_joke(update)
                 elif update.callback_query.data == "Riddle":
-                    #machine.msg.edit_reply_markup(reply_markup=None)
                     machine.start_to_riddle(update)
-                    pass
                 elif update.callback_query.data == "Video":
-                    #machine.msg.edit_reply_markup(reply_markup=None)
                     machine.start_to_music(update)
-                    pass
                 elif update.callback_query.data == "Chat":
-                    #machine.msg.edit_reply_markup(reply_markup=None)
                     machine.start_to_chat(update)
-                    pass # 會從 joke 回來
-                # 會開始下一次機器人
-                else:# 亂按就刪掉
+                else:
+                    # error botton input will cause msg be deleted.
                     update.callback_query.message.edit_reply_markup(reply_markup=None)
                     print("\033[0;32;31m""error: delete this markup""\033[m")
         elif machine.is_joke():
             data = update.callback_query.data
             if data in ["Bad", "Normal", "Funny"]:
                 machine.joke_to_comment(update)
-                machine.comment_joke_to_question(update) # 直接跳
+                machine.comment_joke_to_question(update) # jump directly
             else:
-                #init(update, machine)
                 update.callback_query.message.edit_reply_markup(reply_markup=None)
                 print("\033[0;32;31m""error: joke delete""\033[m")
 
         elif machine.is_question_joke():
             data = update.callback_query.data
             if data in ["Next joke", "Back"]:
-                machine.next_joke(update) # 會判斷往哪裡
+                machine.next_joke(update)
             else:
-                #init(update, machine)
                 update.callback_query.message.edit_reply_markup(reply_markup=None)
                 print("\033[0;32;31m""error: joke question delete""\033[m")
 
@@ -312,7 +291,6 @@ def webhook_handler():
             if data in ["Next riddle", "Back"]:
                 machine.next_riddle(update)
             else:
-                #init(update, machine)
                 update.callback_query.message.edit_reply_markup(reply_markup=None)
                 print("\033[0;32;31m""error: riddle question delete""\033[m")
 
@@ -321,7 +299,6 @@ def webhook_handler():
             if data in ["Suggestion from bot", "Search yourself"]:
                 machine.music_reply(update)
             else:
-                #init(update, machine)
                 update.callback_query.message.edit_reply_markup(reply_markup=None)
                 print("\033[0;32;31m""error: music question delete""\033[m")
 
@@ -329,9 +306,8 @@ def webhook_handler():
             data = update.callback_query.data
             if data in ["Happy", "Angry", "Sad", "Depressed", "Homesick", "Tired", "Bored", "Stressed"]:
                 machine.suggest_mood_music(update)
-                machine.suggest_next_music(update) # 直接跳
+                machine.suggest_next_music(update) # jump directly
             else:
-                #init(update, machine)
                 update.callback_query.message.edit_reply_markup(reply_markup=None)
                 print("\033[0;32;31m""error: mood question delete""\033[m")
 
@@ -340,7 +316,6 @@ def webhook_handler():
             if data in ["Suggestion from bot again", "Back"]:
                 machine.next_suggest(update)
             else:
-                #init(update, machine)
                 update.callback_query.message.edit_reply_markup(reply_markup=None)
                 print("\033[0;32;31m""error: suggest next delete""\033[m") 
 
@@ -349,7 +324,6 @@ def webhook_handler():
             if data in ["No, search again.", "Yes, got it."]:
                 machine.search_next(update)
             else:
-                #init(update, machine)
                 update.callback_query.message.edit_reply_markup(reply_markup=None)
                 print("\033[0;32;31m""error: happy result delete""\033[m")
 
@@ -365,7 +339,6 @@ def webhook_handler():
                 machine.msg = machine.msg.edit_text("Hope this picture can let you be more happy😙")
                 machine.chat_with_mood(update)
             else:
-                #init(update, machine)
                 update.callback_query.message.edit_reply_markup(reply_markup=None)
                 print("\033[0;32;31m""error: chat mood delete""\033[m")
 
@@ -390,12 +363,6 @@ def webhook_handler():
             print("\033[0;32;31m""error: input delete""\033[m")
 
     else:
-        #if update.message.text == 's':
-        #    machine.back(update)
-        '''
-        if update.message.text == "/start":
-            machine.start_msg(update) 
-        '''
         if update.message.text == "/restart":
             init(update, machine)
             return "ok"
@@ -412,7 +379,7 @@ def webhook_handler():
             return "ok"
             
         if machine.is_start():
-            if update.callback_query != None: # 所有回來的都到這裡！ callback
+            if update.callback_query != None:
                 print("\033[0;32;31m""Error if""\033[m")
             else:
                 if update.message.text == "/start":
@@ -421,10 +388,10 @@ def webhook_handler():
                     update.message.reply_text("Please enter 👉 /start to start interaction with me ✌🏻")
         elif machine.is_riddle():
             machine.riddle_to_answer(update)
-            machine.answer_riddle_to_question(update) # 直接跳
+            machine.answer_riddle_to_question(update) # jump directly
         elif machine.is_search():
             machine.search_result_and_question(update)
-            machine.question_result(update) # 直接跳
+            machine.question_result(update) # jump directly
         elif machine.is_chat_deeply() and machine.chat_times <= 1:
             machine.chat_times = machine.chat_times + 1
             machine.chat_deeply(update)
@@ -433,8 +400,7 @@ def webhook_handler():
             update.message.reply_text("Hope you have good time today")
             machine.to_start(update)
         else:
-            #machine.to_start(update)
-            print("\033[0;32;31m""error""\033[m")
+            print("\033[0;32;31m""Abort user input""\033[m")
 
     return "ok"
 

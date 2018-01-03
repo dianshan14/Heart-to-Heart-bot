@@ -217,7 +217,7 @@ class TocMachine(GraphMachine):
             return False
 
     def question_mood(self, update):
-        if self.msg != None: # 回到這裡可以清掉 回到 start 也被清掉
+        if self.msg != None: # edit markup, and start edit too
             self.msg = self.msg.edit_reply_markup(reply_markup=None)
         keyboard = [[InlineKeyboardButton("Happy", callback_data="Happy"),
                      InlineKeyboardButton("Angry", callback_data="Angry"),
@@ -253,8 +253,8 @@ class TocMachine(GraphMachine):
 
         self.msg = update.callback_query.message.reply_text(text=text, parse_mode=telegram.ParseMode.MARKDOWN, reply_markup=reply_markup)
 
-    def suggest_next(self, update): # 也是直接跳 但是會發生
-        # 不用清掉 因為只是決定去哪裡 去的地方會清掉
+    def suggest_next(self, update): 
+        # destination will edit markup
         if update.callback_query != None:
             if update.callback_query.data == "Suggestion from bot again":
                 return True # suggestion again
@@ -266,7 +266,7 @@ class TocMachine(GraphMachine):
 
     # search
     def search(self, update):
-        if self.msg != None: # 回到這裡可以清掉 回到 start 也被清掉
+        if self.msg != None: # edit markup, and start edit too
             self.msg = self.msg.edit_reply_markup(reply_markup=None)
         
         self.msg = update.callback_query.message.reply_text("Tell me keyword 💪🏻\nI will search this keyword on YouTube")
@@ -299,7 +299,7 @@ class TocMachine(GraphMachine):
         pass
 
     def happy_result(self, update):
-        # 回去的地方會清掉
+        # destination will edit markup
         if update.callback_query != None:
             if update.callback_query.data == "No, search again.":
                 return True # search again
@@ -311,7 +311,7 @@ class TocMachine(GraphMachine):
         
 # chat
     def chat_question_mood(self, update):
-        if self.msg != None: # 回到這裡可以清掉 回到 start 也被清掉
+        if self.msg != None: # edit markup, and start edit too
             self.msg = self.msg.edit_reply_markup(reply_markup=None)
         keyboard = [[InlineKeyboardButton("開心", callback_data="開心"),
                      InlineKeyboardButton("生氣", callback_data="生氣"),
