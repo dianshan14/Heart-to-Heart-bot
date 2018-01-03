@@ -14,7 +14,7 @@
 ## Install
 1. clone this repository
 ```
-$ git clone https://github.com/e652424342007/Heart-to-Heart-bot 
+$ git clone https://github.com/e652424342007/Heart-to-Heart-bot.git
 ```
 2. install prior required Python3 package with `pip`
 ```
