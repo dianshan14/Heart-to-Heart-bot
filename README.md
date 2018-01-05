@@ -125,8 +125,8 @@ Note: the version of `python` should be Python3.
 		* <img src="https://i.imgur.com/Jygiblz.jpg" width="200" height="355" />
 
 ## FSM
-[FSM picture link](https://i.imgur.com/k1wNsh1.png)
-![](https://i.imgur.com/k1wNsh1.png)
+[FSM picture link](https://i.imgur.com/Q2oaO2N.png)
+![](https://i.imgur.com/Q2oaO2N.png)
 
 ## advantage
 * I think this bot is practical 😀

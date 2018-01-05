@@ -13,7 +13,7 @@ from transitions import State
 import random
 
 API_TOKEN = '408775585:AAH-zUurs9tNkV_qbfSyFz3EPztGWGABEF8'
-WEBHOOK_URL = 'https://74ac7505.ngrok.io/hook'
+WEBHOOK_URL = 'https://67450858.ngrok.io/hook'
 edited_msg = None
 
 app = Flask(__name__)
